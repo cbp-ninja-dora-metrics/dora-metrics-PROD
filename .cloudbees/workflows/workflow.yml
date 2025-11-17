@@ -4,7 +4,7 @@ name: DORA-workflow
 on:
   push:
     branches:
-      - test-dora
+      - main
   workflow_dispatch:
 jobs:
   build:
