@@ -37,11 +37,12 @@ jobs:
           target-environment: preprod-us-west-2
       
       - name: Sleep
+        kind: deploy
         uses: docker://golang:1.20.3-alpine3.17
         shell: sh
         run: |
           sleep 2
-          # exit 1
+          exit 1
       - name: Register build artifact
         id: publish-build-3
         uses: cloudbees-io/register-build-artifact@v2
@@ -55,6 +56,7 @@ jobs:
         with:
           artifact-id: ${{ steps.publish-build-3.outputs.artifact-id }}
           target-environment: preprod-us-west-2
+        
       - name: Sleep
         uses: docker://golang:1.20.3-alpine3.17
         shell: sh
